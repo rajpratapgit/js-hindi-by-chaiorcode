@@ -1,0 +1,13 @@
+document.getElementById("calculate-btn").addEventListener("click", function () {
+  var birthdate = new Date(document.getElementById("birthdate").value);
+  var today = new Date();
+  var age = today.getFullYear() - birthdate.getFullYear();
+  var monthDiff = today.getMonth() - birthdate.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthdate.getDate())) {
+    age--;
+  }
+
+  document.getElementById("result").innerText =
+    "Your age is " + age + " years.";
+});
