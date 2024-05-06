@@ -1,2 +1,2 @@
 # js-hindi-by-chaiorcode
-A code repo for javascript series at chai aur code youtube channel.
+A code repo for javascript series which i am learning at chai aur code youtube channel by amazing mentor hitesh choudhary.
