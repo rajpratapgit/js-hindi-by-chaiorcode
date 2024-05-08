@@ -17,3 +17,4 @@ const newNumbers = myNums
     return num >= 40
 })
 console.log(newNumbers);
+
