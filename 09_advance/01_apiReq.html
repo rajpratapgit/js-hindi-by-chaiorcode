@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning API</title>
+  </head>
+  <body onload="fetchUserData()">
+    <div class="card">
+      <img id="avatar" src="" alt="Avatar" />
+      <div id="name"></div>
+      <div id="followers"></div>
+    </div>
+
+    <div class="input-container">
+      <input
+        type="text"
+        id="githubApi"
+        placeholder="Enter GitHub API"
+        value="https://api.github.com/users/rajpratapgit"
+      />
+      <button onclick="fetchUserData()">Get Data</button>
+    </div>
+
+    <script>
+      function fetchUserData() {
+        const reqestUrl = document.getElementById("githubApi").value;
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", reqestUrl);
+        xhr.onreadystatechange = function () {
+          console.log(xhr.readyState);
+          if (xhr.readyState == 4) {
+            const data = JSON.parse(this.responseText);
+            console.log(data);
+            const avatar = data.avatar_url;
+            const followers = data.followers;
+            const name = data.name;
+            document.getElementById("avatar").src = avatar;
+            document.getElementById("name").innerHTML = "Name: " + name;
+            document.getElementById("followers").innerHTML =
+              "Followers: " + followers;
+            document.getElementById("githubApi").value = "";
+          }
+        };
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>
