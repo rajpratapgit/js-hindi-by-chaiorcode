@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure</title>
+  </head>
+  <body style="background-color: #111111; color: #fff">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+  </body>
+  <script>
+    //Lexical Scope
+
+    // function init(){
+    //     let name = "raj"
+    //     function displayName(){
+    //         console.log(name);
+    //     }
+    //     displayName();
+    // }
+    // init()
+
+    function outer() {
+      let userName = "raj";
+      function inner() {
+        console.log("Inner: ", userName);
+      }
+      function innerTwo() {
+        console.log("Inner Two: ", userName);
+      }
+      inner();
+      innerTwo();
+    }
+    outer();
+
+    // Closure
+
+    function myFn() {
+      const name = "RAJ";
+      function displayName() {
+        console.log(name);
+      }
+      return displayName;
+    }
+
+    const fun = myFn();
+    fun();
+  </script>
+
+  <script>
+    // document.getElementById('orange').onclick = function() {
+    //     document.body.style.backgroundColor = "orange"
+    // }
+    // document.getElementById('green').onclick = function() {
+    //     document.body.style.backgroundColor = "green"
+    // }
+
+    let buttons = document.querySelectorAll('button')
+    function clickHandler(color) {
+
+        return function(){
+            document.body.style.backgroundColor = color;
+        }
+
+    }
+    buttons.forEach(button => {
+        let color = button.id
+        button.onclick = clickHandler(color)
+    });
+  </script>
+</html>
